@@ -7,6 +7,8 @@
 
 A lightweight SwiftUI library that brings UIKit's interactive pop gesture control to SwiftUI navigation. Easily disable the swipe-back gesture on specific views in your navigation stack.
 
+![image](Image.png)
+
 ## 🎯 Problem
 
 SwiftUI's `NavigationStack` and `NavigationView` don't provide a native way to disable the interactive pop gesture (swipe-back) on specific views. This can be problematic when you have:
@@ -75,62 +77,6 @@ struct ProtectedView: View {
         Text("Swipe back is disabled on this view!")
             .navigationTitle("Protected")
             .swipeBackGestureDisabled() // 🎯 This disables swipe back
-    }
-}
-```
-
-### Multiple Consecutive Views
-
-The library intelligently handles multiple consecutive views with disabled gestures:
-
-```swift
-struct FirstView: View {
-    var body: some View {
-        NavigationLink("Next", destination: SecondView())
-            .navigationTitle("🔴 Step 1")
-            .swipeBackGestureDisabled()
-    }
-}
-
-struct SecondView: View {
-    var body: some View {
-        NavigationLink("Next", destination: ThirdView())
-            .navigationTitle("🔴 Step 2") 
-            .swipeBackGestureDisabled()
-    }
-}
-
-struct ThirdView: View {
-    var body: some View {
-        NavigationLink("Finish", destination: CompletedView())
-            .navigationTitle("🟢 Final Step")
-        // Swipe back re-enabled here
-    }
-}
-```
-
-### Real-World Example
-
-```swift
-struct OnboardingFlow: View {
-    @State private var currentStep = 1
-    
-    var body: some View {
-        NavigationStack {
-            switch currentStep {
-            case 1:
-                WelcomeView()
-                    .swipeBackGestureDisabled()
-            case 2:
-                ProfileSetupView()
-                    .swipeBackGestureDisabled()
-            case 3:
-                PermissionsView()
-                    .swipeBackGestureDisabled()
-            default:
-                HomeView()
-            }
-        }
     }
 }
 ```

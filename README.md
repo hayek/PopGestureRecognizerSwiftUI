@@ -39,7 +39,7 @@ Add PopGestureRecognizerSwiftUI to your project through Xcode:
 1. Go to **File → Add Package Dependencies**
 2. Enter the repository URL:
    ```
-   https://github.com/yourusername/PopGestureRecognizerSwiftUI
+   https://github.com/hayek/PopGestureRecognizerSwiftUI
    ```
 3. Select the version and add to your target
 
@@ -47,7 +47,7 @@ Or add it to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/yourusername/PopGestureRecognizerSwiftUI", from: "1.0.0")
+    .package(url: "https://github.com/hayek/PopGestureRecognizerSwiftUI", from: "1.0.0")
 ]
 ```
 

@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B881D5C52DD79ABB002542F7 /* PopGestureRecognizerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B881D5C42DD79ABB002542F7 /* PopGestureRecognizerSwiftUI */; };
+		B8A0F7062DEC8571004BF5CD /* PopGestureRecognizerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B8A0F7052DEC8571004BF5CD /* PopGestureRecognizerSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B8A8ECF52DEC47DC0014AB6D /* PopGestureRecognizerSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PopGestureRecognizerSwiftUI; sourceTree = "<group>"; };
 		B8D3060E2DD7983900034F3E /* PopGestureRecognizerSwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopGestureRecognizerSwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -28,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B881D5C52DD79ABB002542F7 /* PopGestureRecognizerSwiftUI in Frameworks */,
+				B8A0F7062DEC8571004BF5CD /* PopGestureRecognizerSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +47,6 @@
 				B8D306102DD7983900034F3E /* PopGestureRecognizerSwiftUIExample */,
 				B881D5C32DD79ABB002542F7 /* Frameworks */,
 				B8D3060F2DD7983900034F3E /* Products */,
-				B8A8ECF52DEC47DC0014AB6D /* PopGestureRecognizerSwiftUI */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +78,7 @@
 			);
 			name = PopGestureRecognizerSwiftUIExample;
 			packageProductDependencies = (
-				B881D5C42DD79ABB002542F7 /* PopGestureRecognizerSwiftUI */,
+				B8A0F7052DEC8571004BF5CD /* PopGestureRecognizerSwiftUI */,
 			);
 			productName = PopGestureRecognizerSwiftUIExample;
 			productReference = B8D3060E2DD7983900034F3E /* PopGestureRecognizerSwiftUIExample.app */;
@@ -110,6 +108,9 @@
 			);
 			mainGroup = B8D306052DD7983900034F3E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B8A0F7042DEC8571004BF5CD /* XCLocalSwiftPackageReference "../../PopGestureRecognizerSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8D3060F2DD7983900034F3E /* Products */;
 			projectDirPath = "";
@@ -343,8 +344,15 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		B8A0F7042DEC8571004BF5CD /* XCLocalSwiftPackageReference "../../PopGestureRecognizerSwiftUI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PopGestureRecognizerSwiftUI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		B881D5C42DD79ABB002542F7 /* PopGestureRecognizerSwiftUI */ = {
+		B8A0F7052DEC8571004BF5CD /* PopGestureRecognizerSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PopGestureRecognizerSwiftUI;
 		};

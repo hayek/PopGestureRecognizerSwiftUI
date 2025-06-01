@@ -15,6 +15,12 @@ struct ThirdView: View {
         }
         .navigationTitle("🔴 ThirdView")
         .swipeBackGestureDisabled()
+        .onAppear {
+            modifyOrientation(to: .all)
+        }
+        .onDisappear {
+            modifyOrientation(to: .portrait)
+        }
     }
 }
 

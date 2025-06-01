@@ -11,25 +11,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8A8ECF52DEC47DC0014AB6D /* PopGestureRecognizerSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PopGestureRecognizerSwiftUI; sourceTree = "<group>"; };
 		B8D3060E2DD7983900034F3E /* PopGestureRecognizerSwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopGestureRecognizerSwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B8D306202DD7986400034F3E /* Exceptions for "PopGestureRecognizerSwiftUIExample" folder in "PopGestureRecognizerSwiftUIExample" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				PopGestureRecognizerSwiftUI,
-			);
-			target = B8D3060D2DD7983900034F3E /* PopGestureRecognizerSwiftUIExample */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B8D306102DD7983900034F3E /* PopGestureRecognizerSwiftUIExample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				B8D306202DD7986400034F3E /* Exceptions for "PopGestureRecognizerSwiftUIExample" folder in "PopGestureRecognizerSwiftUIExample" target */,
-			);
 			path = PopGestureRecognizerSwiftUIExample;
 			sourceTree = "<group>";
 		};
@@ -60,6 +48,7 @@
 				B8D306102DD7983900034F3E /* PopGestureRecognizerSwiftUIExample */,
 				B881D5C32DD79ABB002542F7 /* Frameworks */,
 				B8D3060F2DD7983900034F3E /* Products */,
+				B8A8ECF52DEC47DC0014AB6D /* PopGestureRecognizerSwiftUI */,
 			);
 			sourceTree = "<group>";
 		};

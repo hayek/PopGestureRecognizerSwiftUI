@@ -16,7 +16,7 @@ private struct NavigationState {
 
 private enum NavigationStateStore {
     @MainActor
-    static var all: [UIViewController: NavigationState] = [:]
+    static var all: [Int: NavigationState] = [:]
 }
 
 public extension View {
@@ -27,25 +27,31 @@ public extension View {
             .task {
                 guard let navigationController = UIKitNavigationWrapper.getCurrentNavigationController(),
                       let currentVC = navigationController.viewControllers.last else { return }
-
-                if NavigationStateStore.all[currentVC] == nil {
-                    NavigationStateStore.all[currentVC] = NavigationState()
+                
+                if NavigationStateStore.all[currentVC.hashValue] == nil {
+                    NavigationStateStore.all[currentVC.hashValue] = NavigationState()
                 }
-
-                NavigationStateStore.all[currentVC]?.currentViewController = currentVC
-                NavigationStateStore.all[currentVC]?.observationTask?.cancel()
-
-                if NavigationStateStore.all[currentVC]?.nextViewController == nil {
+                
+                NavigationStateStore.all[currentVC.hashValue]?.currentViewController = currentVC
+                NavigationStateStore.all[currentVC.hashValue]?.observationTask?.cancel()
+                
+                if NavigationStateStore.all[currentVC.hashValue]?.nextViewController == nil {
                     // First entry: disable swipe
                     navigationController.interactivePopGestureRecognizer?.isEnabled = false
+                    if #available(iOS 26.0, *) {
+                        navigationController.interactiveContentPopGestureRecognizer?.isEnabled = false
+                    }
                 } else {
                     // Wait to detect when this view becomes top again
-                    NavigationStateStore.all[currentVC]?.observationTask = Task {
+                    NavigationStateStore.all[currentVC.hashValue]?.observationTask = Task {
                         while !Task.isCancelled {
                             try? await Task.sleep(for: .milliseconds(100))
-
-                            if NavigationStateStore.all[currentVC]?.nextViewController == nil {
+                            
+                            if NavigationStateStore.all[currentVC.hashValue]?.nextViewController == nil {
                                 navigationController.interactivePopGestureRecognizer?.isEnabled = false
+                                if #available(iOS 26.0, *) {
+                                    navigationController.interactiveContentPopGestureRecognizer?.isEnabled = false
+                                }
                                 break
                             }
                         }
@@ -56,21 +62,25 @@ public extension View {
                 guard let navigationController = UIKitNavigationWrapper.getCurrentNavigationController() else { return }
 
                 if let returningVC = navigationController.viewControllers.last {
-                    NavigationStateStore.all[returningVC]?.observationTask?.cancel()
+                    NavigationStateStore.all[returningVC.hashValue]?.observationTask?.cancel()
                 }
 
                 if let previousVC = navigationController.viewControllers.secondToLast {
-                    NavigationStateStore.all[previousVC]?.observationTask?.cancel()
+                    NavigationStateStore.all[previousVC.hashValue]?.observationTask?.cancel()
 
-                    if navigationController.viewControllers.contains(where: { $0 == NavigationStateStore.all[previousVC]?.currentViewController }) {
-                        NavigationStateStore.all[previousVC]?.nextViewController = navigationController.viewControllers.last
+                    if navigationController.viewControllers.contains(where: { $0 == NavigationStateStore.all[previousVC.hashValue]?.currentViewController }) {
+                        NavigationStateStore.all[previousVC.hashValue]?.nextViewController = navigationController.viewControllers.last
                     } else {
-                        NavigationStateStore.all[previousVC] = nil
+                        NavigationStateStore.all[previousVC.hashValue] = nil
                     }
                 }
 
                 if let lastVC = navigationController.viewControllers.last {
-                    navigationController.interactivePopGestureRecognizer?.isEnabled = !NavigationStateStore.all.keys.contains(lastVC)
+                    let isRecognizerEnabled = !NavigationStateStore.all.keys.contains(lastVC.hashValue)
+                    navigationController.interactivePopGestureRecognizer?.isEnabled = false
+                    if #available(iOS 26.0, *) {
+                        navigationController.interactiveContentPopGestureRecognizer?.isEnabled = isRecognizerEnabled
+                    }
                 }
             }
     }
